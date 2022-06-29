@@ -2,14 +2,19 @@ import useSWR, { mutate } from "swr";
 import { useState, useEffect } from "react";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
+
 export default function Home() {
   const { data, error } = useSWR("/api/todos", fetcher);
-  const [todoItem, setTodoItem] = useState("");
+  const [todoItem, setTodoItem] = useState(null);
 
   const addTodo = async (title) => {
     await fetcher("/api/todos", {
       method: "POST",
       body: JSON.stringify({ title: title }),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
     });
     mutate("/api/todos");
   };
@@ -90,7 +95,7 @@ const handleSubmit = (e) => {
                   <input
                     type="checkbox"
                     className="w-4 h-4 border-0 focus:ring-0 checked:bg-white"
-                    checked
+                    unchecked
                   />
                   <span className="ml-2">
                     <li key={id}>{title}</li>
@@ -107,7 +112,7 @@ const handleSubmit = (e) => {
                   </svg>
                 </div>
               </div>
-            ))}
+            ))},
 
           {data
             ?.filter((item) => !item.pinned)
@@ -117,7 +122,7 @@ const handleSubmit = (e) => {
                   <input
                     type="checkbox"
                     className="w-4 h-4 border-0 focus:ring-0 checked:bg-white"
-                    checked
+                    unchecked
                   />
                   <span className="ml-2">
                     <li key={id}>{title}</li>
