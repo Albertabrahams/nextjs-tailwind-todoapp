@@ -6,7 +6,7 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function Home() {
   const { data, error } = useSWR("/api/todos", fetcher);
-  const [todoItem, setTodoItem] = useState(null);
+  const [todoItem, setTodoItem] = useState("");
 
   const addTodo = async (title) => {
     await fetcher("/api/todos", {
@@ -91,6 +91,7 @@ const handleSubmit = (e) => {
           {data?.filter((item) => item.pinned)
             .map(({ id, title , checked,pinned }) => (
               <Todos
+              key={id}
               id={id}
               title={title}
               isChecked = {checked}
@@ -101,6 +102,7 @@ const handleSubmit = (e) => {
           {data?.filter((item) => !item.pinned)
             .map(({ id, title , checked , pinned }) => (
               <Todos
+              key={id}
               id={id}
               title={title}
               isChecked = {checked}

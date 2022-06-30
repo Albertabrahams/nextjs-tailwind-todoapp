@@ -3,20 +3,20 @@
         {
             "id": 1643718566727,
             "title": "Example Todo 1",
-            "checked": true,
-            "pinned": true
+            "checked": false,
+            "pinned": false
         },
         {
             "id": 1643718584922,
             "title": "Example Todo 2",
-            "checked": true,
-            "pinned": true
+            "checked": false,
+            "pinned": false
         },
         {
             "id": 1652861685792,
             "title": "westerops example",
-            "checked": true,
-            "pinned": true
+            "checked": false,
+            "pinned": false
         },
         {
             "id": 1656579048824,
@@ -26,9 +26,9 @@
         },
         {
             "id": 1656579056157,
-            "title": "give me the job:)))",
+            "title": "Please give me the job:)))",
             "checked": true,
-            "pinned": false
+            "pinned": true
         }
     ]
 }
