@@ -4,23 +4,41 @@
             "id": 1643718566727,
             "title": "Example Todo 1",
             "checked": false,
-            "pinned": false
+            "pinned": true
         },
         {
             "id": 1643718584922,
             "title": "Example Todo 2",
-            "checked": false,
+            "checked": true,
             "pinned": true
         },
         {
             "id": 1652861685792,
             "title": "westerops example",
             "checked": true,
+            "pinned": true
+        },
+        {
+            "id": 1656579048824,
+            "title": "new task",
+            "checked": false,
+            "pinned": true
+        },
+        {
+            "id": 1656579056157,
+            "title": "give me the job:)))",
+            "checked": false,
             "pinned": false
         },
         {
-            "id": 1656527088104,
-            "title": "halil",
+            "id": 1656579079816,
+            "title": "immediately",
+            "checked": false,
+            "pinned": false
+        },
+        {
+            "id": 1656579084376,
+            "title": "pleaseee",
             "checked": false,
             "pinned": false
         }

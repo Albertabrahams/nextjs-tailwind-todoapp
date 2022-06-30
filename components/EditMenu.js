@@ -5,13 +5,37 @@ import { mutate } from "swr";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const EditMenu = ({ id, isPinned, title }) => {
-  const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const [updateItem, setUpdateItem] = useState(title);
 
-//   Pin Todo By Id "PATCH" Function
     const pinTodo = async (id, isPinned) => {
+        await fetcher("/api/todos/" + `${id}`, {
+          method: "PATCH",
+          body: JSON.stringify({ pinned: !isPinned }),
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          }
+        });
+        mutate("/api/todos");
+      };
+
+    const updateTodo = async (id, text) => {
+        await fetcher("/api/todos/" + `${id}`, {
+          method: "PATCH",
+          body: JSON.stringify({ title: text }),
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          }
+        });
+        mutate("/api/todos");
+      };
+  
+  //Delete Todo By Id "DELETE" Function
+  const deleteTodo = async (id) => {
       await fetcher("/api/todos/" + `${id}`, {
-        method: "PATCH",
-        body: JSON.stringify({ pinned: !isPinned }),
+        method: "DELETE",
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
@@ -19,36 +43,6 @@ const EditMenu = ({ id, isPinned, title }) => {
       });
       mutate("/api/todos");
     };
-
-//Update Todo By Id "PATCH" Function
-    const updateTodo = async (id, title) => {
-        await fetcher("/api/todos/" + `${id}`, {
-            method: "PATCH",
-            body: JSON.stringify({ title: title }),
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            }
-        
-        });
-        mutate("/api/todos");
-    }
-
-
-    //Delete Todo By Id "DELETE" Function
-    const deleteTodo = async (id) => {
-        await fetcher("/api/todos/" + `${id}`, {
-        method: "DELETE",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        }
-        });
-        mutate("/api/todos");
-    };
-
-
-
 
   return (
     <Popover className="flex flex-col cursor-pointer relative ">
@@ -64,16 +58,17 @@ const EditMenu = ({ id, isPinned, title }) => {
           </svg>
         </div>
       </Popover.Button>
-      <Popover.Panel  className=" block flex  absolute right-0 w-40  p-5 mt-5 z-20 flex-col bg-white rounded border-solid border ">
+      <Popover.Panel className=" block flex  absolute right-0 w-40  p-5 mt-5 z-20 flex-col bg-white rounded border-solid border ">
         <Popover.Button
-            className="w-full  mb-2 flex flex-start"
-            onClick={() => pinTodo(id, isPinned)}
+         className="w-full  mb-2 flex flex-start"
+
+        onClick={() => pinTodo(id, isPinned)}
         >
-          <div>
+        <div>
             <svg
               className="w-5 inline mr-2 rotate-[315deg]"
               xmlns="http://www.w3.org/2000/svg"
-              enableBackground="new 0 0 24 24"
+              enable-background="new 0 0 24 24"
               height="24px"
               viewBox="0 0 24 24"
               width="24px"
@@ -91,7 +86,8 @@ const EditMenu = ({ id, isPinned, title }) => {
           </div>
         </Popover.Button>
         <button className="w-3/4 mb-2 flex flex-start"
-            onClick={() => updateTodo(id, title)}>
+        onClick={() => setIsOpen(true)}
+        >
           <div>
             <svg
               className="w-5 inline mr-2"
@@ -99,21 +95,44 @@ const EditMenu = ({ id, isPinned, title }) => {
               fill="none"
               viewBox="0 0 24 24"
               stroke="#010A1B"
-              strokeWidth="2"
+              stroke-width="2"
             >
               <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                stroke-linecap="round"
+                stroke-linejoin="round"
                 d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
               />
             </svg>
             <span>Update</span>
           </div>
         </button>
+        {isOpen && (
+          <div>
+            <input
+                className=" block w-full"
+                value={updateItem}
+                name="memo"
+                onChange={(e) => setUpdateItem(e.target.value)}
+            />
+            <div className="flex justify-between ">
+                <Popover.Button
+                className="bg-green-600 rounded"
+                onClick={(e) => {
+                updateTodo(id, updateItem);
+                setIsOpen(false)
+                }}>Edit</Popover.Button>
+
+                <button
+                className="bg-red-600 rounded"
+                onClick={() => setIsOpen(false)}
+                >Close</button>
+            </div>
+          </div>
+        )}
         <Popover.Button
           className="w-3/4  mb-2 flex flex-start"
 
-            onClick={() => deleteTodo(id)}
+        onClick={() => deleteTodo(id)}
         >
           <div>
             <svg

@@ -19,12 +19,11 @@ const checkTodo = async (id, check) => {
   };
   return (
     <div className="mt-2 w-full flex justify-between text-[#010A1B] font-['Inter'] ">
-        
-        <label className="relative flex items-center justify-items-start">
-        {isPinned ? <svg
+      <label className="relative flex items-center justify-items-start">
+      {isPinned ? <svg
             className="absolute  -left-7 rotate-[315deg]"
             xmlns="http://www.w3.org/2000/svg"
-            enableBackground="new 0 0 24 24"
+            enable-background="new 0 0 24 24"
             height="24px"
             viewBox="0 0 24 24"
             width="24px"
@@ -50,6 +49,7 @@ const checkTodo = async (id, check) => {
       <EditMenu 
       id = {id}
       isPinned = {isPinned}
+      title = {title}
       />
     </div>
   );
