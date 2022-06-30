@@ -3,7 +3,7 @@
         {
             "id": 1643718566727,
             "title": "Example Todo 1",
-            "checked": false,
+            "checked": true,
             "pinned": true
         },
         {
@@ -22,24 +22,12 @@
             "id": 1656579048824,
             "title": "new task",
             "checked": false,
-            "pinned": true
+            "pinned": false
         },
         {
             "id": 1656579056157,
             "title": "give me the job:)))",
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1656579079816,
-            "title": "immediately",
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1656579084376,
-            "title": "pleaseee",
-            "checked": false,
+            "checked": true,
             "pinned": false
         }
     ]

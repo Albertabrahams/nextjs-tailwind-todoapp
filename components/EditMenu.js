@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Popover } from "@headlessui/react";
 import { mutate } from "swr";
 
+
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const EditMenu = ({ id, isPinned, title }) => {
@@ -111,7 +112,7 @@ const EditMenu = ({ id, isPinned, title }) => {
             <input
                 className=" block w-full"
                 value={updateItem}
-                name="memo"
+                name="update item"
                 onChange={(e) => setUpdateItem(e.target.value)}
             />
             <div className="flex justify-between ">
