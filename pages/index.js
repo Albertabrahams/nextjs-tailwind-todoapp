@@ -2,16 +2,23 @@ import useSWR, { mutate } from "swr";
 import { useState, useEffect } from "react";
 import Todos from "../components/Todos";
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 export default function Home() {
   const { data, error } = useSWR("/api/todos", fetcher);
-  const [todoItem, setTodoItem] = useState(null);
+  const [todoItem, setTodoItem] = useState("");
+ 
 
-  const addTodo = async (title) => {
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    addTodo(todoItem);
+    setTodoItem("");
+}
+
+  const addTodo = async (title ) => {
     await fetcher("/api/todos", {
       method: "POST",
-      body: JSON.stringify({ title: title }),
+      body: JSON.stringify({title: title}),
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -20,25 +27,20 @@ export default function Home() {
     mutate("/api/todos");
   };
 
-const handleSubmit = (e) => {
-  e.preventDefault();
- // mutate("/api/todos", [...data, todoItem], false);
-  console.log(todoItem);
-  addTodo(todoItem);
-  setTodoItem("");
-}
+  
 
-
+  
   return (
     <div
-      className=" flex w-3/5 h-auto bg-white mt-5 mb-5 justify-center flex-col text-gray-200 rounded">
+      className=" flex w-[718px] h-[800px] bg-white mt-5 mb-5  flex-col text-gray-200 rounded"
+      id="todoitem"
+    >
       <h1 className="w-36 font-['Inter'] border-b-4 border-[#FF7964] text-center mx-auto text-[#194591] font-semibold text-[20px]">
         ToDo List
       </h1>
       <hr />
       <div className="flex flex-col mt-8 w-3/4 mx-auto">
-      <form action="" 
-      onSubmit={handleSubmit}>
+      <form action="" onSubmit={handleSubmit}>
         <div className="flex flex-row justify-center">
           <div className="w-full flex h-10 items-center pl-2 pr-2 mb-2 rounded border-2 border-[#999C9F]">
             <svg
@@ -63,6 +65,7 @@ const handleSubmit = (e) => {
               value={todoItem}
               placeholder="Add a task..."
               onChange={(e) => setTodoItem(e.target.value)}
+            
             />
           </div>
           <button
@@ -74,35 +77,36 @@ const handleSubmit = (e) => {
               className="h-6 w-6"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              strokeWidth="2"
+              stroke-width="2"
             >
               <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                stroke-linecap="round"
+                stroke-linejoin="round"
                 d="M14 5l7 7m0 0l-7 7m7-7H3"
               />
             </svg>
           </button>
-          
         </div>
         </form>
 
         <ul>
-          {data?.filter((item) => item.pinned)
-            .map(({ id, title , checked }) => (
+        {data?.filter((item) => item.pinned)
+            .map(({ id, title , checked, pinned }) => (
               <Todos
               id={id}
               title={title}
               isChecked = {checked}
+              isPinned = {pinned}
               />
             ))},
-          <hr />
+          <hr className="border-solid border-sm my-11"></hr>
           {data?.filter((item) => !item.pinned)
-            .map(({ id, title , checked }) => (
+            .map(({ id, title , checked , pinned}) => (
               <Todos
               id={id}
               title={title}
               isChecked = {checked}
+              isPinned = {pinned}
               />
             ))}
         </ul>

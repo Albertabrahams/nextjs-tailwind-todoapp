@@ -1,9 +1,10 @@
 import React from "react";
 import useSWR, { mutate } from "swr";
+import EditMenu from "./EditMenu";
 
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
-const Todos = ({id,title,isChecked}) => {
+const Todos = ({id,title,isChecked, isPinned }) => {
 
 const checkTodo = async (id, check) => {
     await fetcher("/api/todos/" + `${id}`, {
@@ -18,7 +19,24 @@ const checkTodo = async (id, check) => {
   };
   return (
     <div className="mt-2 w-full flex justify-between text-[#010A1B] font-['Inter'] ">
-      <label className="flex items-center justify-items-start">
+        
+        <label className="relative flex items-center justify-items-start">
+        {isPinned ? <svg
+            className="absolute  -left-7 rotate-[315deg]"
+            xmlns="http://www.w3.org/2000/svg"
+            enableBackground="new 0 0 24 24"
+            height="24px"
+            viewBox="0 0 24 24"
+            width="24px"
+            fill="#FF7964"
+            >
+              <g>
+                <rect fill="none" height="24" width="24" />
+              </g>
+              <g>
+                <path d="M14,4v5c0,1.12,0.37,2.16,1,3H9c0.65-0.86,1-1.9,1-3V4H14 M17,2H7C6.45,2,6,2.45,6,3c0,0.55,0.45,1,1,1c0,0,0,0,0,0l1,0v5 c0,1.66-1.34,3-3,3v2h5.97v7l1,1l1-1v-7H19v-2c0,0,0,0,0,0c-1.66,0-3-1.34-3-3V4l1,0c0,0,0,0,0,0c0.55,0,1-0.45,1-1 C18,2.45,17.55,2,17,2L17,2z" />
+              </g>
+            </svg> : ""}
         <input
           type="checkbox"
           className="w-4 h-4 border-0 focus:ring-0 checked:bg-white"
@@ -29,16 +47,10 @@ const checkTodo = async (id, check) => {
           <li key={id}>{title}</li>
         </span>
       </label>
-      <div className="text-[#999C9F]">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-        >
-          <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-        </svg>
-      </div>
+      <EditMenu 
+      id = {id}
+      isPinned = {isPinned}
+      />
     </div>
   );
 };

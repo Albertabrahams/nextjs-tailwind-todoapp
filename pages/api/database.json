@@ -3,29 +3,23 @@
         {
             "id": 1643718566727,
             "title": "Example Todo 1",
-            "checked": true,
+            "checked": false,
             "pinned": false
         },
         {
             "id": 1643718584922,
             "title": "Example Todo 2",
             "checked": false,
-            "pinned": false
+            "pinned": true
         },
         {
             "id": 1652861685792,
             "title": "westerops example",
-            "checked": false,
-            "pinned": true
-        },
-        {
-            "id": 1656439160655,
-            "title": "halil",
-            "checked": false,
+            "checked": true,
             "pinned": false
         },
         {
-            "id": 1656493158720,
+            "id": 1656527088104,
             "title": "halil",
             "checked": false,
             "pinned": false
