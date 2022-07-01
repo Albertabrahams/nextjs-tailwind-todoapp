@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import { Popover } from "@headlessui/react";
+import { Popover } from "@headlessui/react"; 
 import { mutate } from "swr";
-
-
+//helper when fetching data from the server
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
-
+//
 const EditMenu = ({ id, isPinned, title }) => {
+    //To edit the title of the todo (popover)
     const [isOpen, setIsOpen] = useState(false);
     const [updateItem, setUpdateItem] = useState(title);
 
+    //pin-unpin todo
     const pinTodo = async (id, isPinned) => {
         await fetcher("/api/todos/" + `${id}`, {
           method: "PATCH",
@@ -20,7 +21,8 @@ const EditMenu = ({ id, isPinned, title }) => {
         });
         mutate("/api/todos");
       };
-
+    
+    //update the title of the todo
     const updateTodo = async (id, text) => {
         await fetcher("/api/todos/" + `${id}`, {
           method: "PATCH",
@@ -47,7 +49,7 @@ const EditMenu = ({ id, isPinned, title }) => {
 
   return (
     <Popover className="flex flex-col cursor-pointer relative ">
-      <Popover.Button className=" cursor-pointer outline-none">
+      <Popover.Button className=" cursor-pointer outline-none"> 
         <div className="text-[#999C9F]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +61,7 @@ const EditMenu = ({ id, isPinned, title }) => {
           </svg>
         </div>
       </Popover.Button>
-      <Popover.Panel className=" block flex  absolute right-0 w-40  p-5 mt-5 z-20 flex-col bg-white rounded border-solid border ">
+      <Popover.Panel className="block flex absolute right-0 w-40  p-5 mt-5 z-20 flex-col bg-white rounded border-solid border ">
         <Popover.Button
          className="w-full  mb-2 flex flex-start"
 

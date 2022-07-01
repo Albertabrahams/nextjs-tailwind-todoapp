@@ -1,13 +1,16 @@
 import useSWR, { mutate } from "swr";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Todos from "../components/Todos";
 
+//helper when fetching data from the server
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function Home() {
+  //getting todos from the api
   const { data, error } = useSWR("/api/todos", fetcher);
   const [todoItem, setTodoItem] = useState("");
 
+  //Create New Todo By Title "POST" Function
   const addTodo = async (title) => {
     await fetcher("/api/todos", {
       method: "POST",
@@ -20,14 +23,12 @@ export default function Home() {
     mutate("/api/todos");
   };
 
+  //Functions runs when user clicks on the button
 const handleSubmit = (e) => {
   e.preventDefault();
- // mutate("/api/todos", [...data, todoItem], false);
-  console.log(todoItem);
   addTodo(todoItem);
   setTodoItem("");
 }
-
 
   return (
     <div
@@ -41,7 +42,7 @@ const handleSubmit = (e) => {
       onSubmit={handleSubmit}>
         <div className="flex flex-row justify-center">
           <div className="w-full flex h-10 items-center pl-2 pr-2 mb-2 rounded border-2 border-[#999C9F]">
-            <svg
+            <svg //the icon before addtask placeholder
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -69,7 +70,7 @@ const handleSubmit = (e) => {
             className="w-10 h-10 bg-[#21A7F9] px-2 ml-2 rounded"
             type="submit"
           >
-            <svg
+            <svg //the arrow icon in button
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
               viewBox="0 0 24 24"
@@ -85,10 +86,10 @@ const handleSubmit = (e) => {
           </button>
           
         </div>
+        
         </form>
-
         <ul>
-          {data?.filter((item) => item.pinned)
+          {data?.filter((item) => item.pinned) //filtering pinned todos
             .map(({ id, title , checked,pinned }) => (
               <Todos
               key={id}

@@ -1,11 +1,12 @@
 import React from "react";
-import useSWR, { mutate } from "swr";
+import { mutate } from "swr";
 import EditMenu from "./EditMenu";
-
-
+//helper when fetching data from the server
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
+//props
 const Todos = ({id,title,isChecked, isPinned }) => {
 
+  //Checked-Unchecked Todo
 const checkTodo = async (id, check) => {
     await fetcher("/api/todos/" + `${id}`, {
       method: "PATCH",
@@ -17,10 +18,11 @@ const checkTodo = async (id, check) => {
     });
     mutate("/api/todos");
   };
+
   return (
     <div className=" mt-2 w-full flex justify-between text-[#010A1B] font-['Inter'] ">
       <label className="relative flex items-center justify-items-start">
-      {isPinned ? <svg
+      {isPinned ? <svg //the pin icon
             className="absolute  -left-7 rotate-[315deg]"
             xmlns="http://www.w3.org/2000/svg"
             enableBackground="new 0 0 24 24"
@@ -47,7 +49,7 @@ const checkTodo = async (id, check) => {
           <li key={id}>{title}</li>
         </span>
       </label>
-      <EditMenu 
+      <EditMenu  //edit menu component
       id = {id}
       isPinned = {isPinned}
       title = {title}
