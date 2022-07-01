@@ -1,0 +1,129 @@
+commit dcd86d0a0d95c8cc9e35a59224314a3253c75ab2
+Author: Albertabrahams <halilibrahim.soyman@gmail.com>
+Date:   Fri Jul 1 12:43:47 2022 +0300
+
+    Project completed-Comments added
+
+ components/EditMenu.js | 16 +++++++++-------
+ components/Todos.js    | 12 +++++++-----
+ pages/index.js         | 17 +++++++++--------
+ 3 files changed, 25 insertions(+), 20 deletions(-)
+
+commit ccae7e7a445d1bdd31411ccd1f8de0995394cfd8
+Author: Albertabrahams <halilibrahim.soyman@gmail.com>
+Date:   Thu Jun 30 23:13:09 2022 +0300
+
+    project done-edit2-vercel deploy
+
+ pages/api/database.json | 16 ++++++++--------
+ pages/index.js          |  4 +++-
+ 2 files changed, 11 insertions(+), 9 deletions(-)
+
+commit 67ec9fe163d9dfe8d3ae9856e39b8944cf25eab9
+Author: Albertabrahams <halilibrahim.soyman@gmail.com>
+Date:   Thu Jun 30 22:55:24 2022 +0300
+
+    project done-edit1
+
+ components/EditMenu.js | 8 ++++----
+ components/Todos.js    | 2 +-
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+commit 2f8dd6948bef87f65e0b91446f847547e5da0a6f
+Author: Albertabrahams <halilibrahim.soyman@gmail.com>
+Date:   Thu Jun 30 22:39:21 2022 +0300
+
+    project done
+
+ components/EditMenu.js  |  3 ++-
+ components/Todos.js     |  5 +++--
+ pages/api/database.json | 18 +++---------------
+ pages/index.js          | 50 ++++++++++++++++++++++++-------------------------
+ tailwind.config.js      |  1 -
+ 5 files changed, 32 insertions(+), 45 deletions(-)
+
+commit 8f3afd451b85d00de514068fd15f2063e8d73871
+Author: Albertabrahams <halilibrahim.soyman@gmail.com>
+Date:   Thu Jun 30 13:28:16 2022 +0300
+
+    done
+
+ components/EditMenu.js  | 103 ++++++++++++++++++++++++++++--------------------
+ components/Todos.js     |   8 ++--
+ pages/api/database.json |  26 ++++++++++--
+ pages/index.js          |   2 +-
+ 4 files changed, 88 insertions(+), 51 deletions(-)
+
+commit 663c230214e5ccea9f89371f45cc4e42dc3acdb9
+Author: Albertabrahams <halilibrahim.soyman@gmail.com>
+Date:   Thu Jun 30 11:46:38 2022 +0300
+
+    update
+
+ components/EditMenu.js  | 145 ++++++++++++++++++++++++++++++++++++++++++++++++
+ components/Todos.js     |  36 ++++++++----
+ package-lock.json       |  19 +++++++
+ package.json            |   1 +
+ pages/api/database.json |  14 ++---
+ pages/index.js          |  50 +++++++++--------
+ tailwind.config.js      |  23 +++++++-
+ 7 files changed, 241 insertions(+), 47 deletions(-)
+
+commit c909ef7a04133beafe4646dccadb2676d9ccc26c
+Author: Albertabrahams <halilibrahim.soyman@gmail.com>
+Date:   Wed Jun 29 12:11:11 2022 +0300
+
+    checked done
+
+ components/Todos.js     | 46 +++++++++++++++++++++++++++++++++
+ pages/api/database.json |  6 +++++
+ pages/index.js          | 67 ++++++++++++-------------------------------------
+ 3 files changed, 68 insertions(+), 51 deletions(-)
+
+commit 7477fbc76bc75d904c7dc0998785cf3a182e0f87
+Author: Albertabrahams <halilibrahim.soyman@gmail.com>
+Date:   Wed Jun 29 11:09:11 2022 +0300
+
+    headers added
+
+ pages/_app.js           |  7 +++++--
+ pages/api/database.json |  6 ++++++
+ pages/index.js          | 13 +++++++++----
+ 3 files changed, 20 insertions(+), 6 deletions(-)
+
+commit f93873959c37c6ce2449609ea990b163710bcf1f
+Author: Albertabrahams <halilibrahim.soyman@gmail.com>
+Date:   Tue Jun 28 19:49:29 2022 +0300
+
+    index
+
+ pages/index.js | 187 +++++++++++++++++++++++++++++++++++++--------------------
+ 1 file changed, 123 insertions(+), 64 deletions(-)
+
+commit ff7158ba2c9c765b58431c11690ce6c0e14720a8
+Author: Albertabrahams <halilibrahim.soyman@gmail.com>
+Date:   Tue Jun 28 14:03:39 2022 +0300
+
+    first commit
+
+ .eslintrc.json           |    3 +
+ .gitignore               |   32 +
+ README.md                |  136 +
+ figma-design-details.png |  Bin 0 -> 511524 bytes
+ figma-design.png         |  Bin 0 -> 480904 bytes
+ next.config.js           |    6 +
+ package-lock.json        | 6157 ++++++++++++++++++++++++++++++++++++++++++++++
+ package.json             |   27 +
+ pages/_app.js            |   10 +
+ pages/api/database.json  |   22 +
+ pages/api/hello.js       |    5 +
+ pages/api/todos/[id].js  |   60 +
+ pages/api/todos/index.js |   43 +
+ pages/index.js           |   83 +
+ postcss.config.js        |    6 +
+ public/favicon.ico       |  Bin 0 -> 25931 bytes
+ public/vercel.svg        |    4 +
+ styles/Home.module.css   |    1 +
+ styles/globals.css       |    3 +
+ tailwind.config.js       |   11 +
+ 20 files changed, 6609 insertions(+)
