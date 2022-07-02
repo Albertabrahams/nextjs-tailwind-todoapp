@@ -1,3 +1,42 @@
+commit 4638dc693560a34d63ed37d27bd77a8253b54813
+Author: Albertabrahams <halilibrahim.soyman@gmail.com>
+Date:   Sat Jul 2 12:25:45 2022 +0300
+
+    project done
+
+ package.json            | 1 -
+ pages/api/database.json | 6 ------
+ 2 files changed, 7 deletions(-)
+
+commit 31a10e5d1dcefda33e5133c8a9e53f8ad2841b7f
+Author: Albertabrahams <halilibrahim.soyman@gmail.com>
+Date:   Fri Jul 1 16:23:58 2022 +0300
+
+    nextconfig added
+
+ next.config.js | 19 ++++++++++++++++++-
+ 1 file changed, 18 insertions(+), 1 deletion(-)
+
+commit 8874488be522f90432e6c128646da9d38c3631c9
+Author: Albertabrahams <halilibrahim.soyman@gmail.com>
+Date:   Fri Jul 1 15:58:36 2022 +0300
+
+    made export
+
+ next.config.js          | 1 +
+ package.json            | 1 +
+ pages/api/database.json | 4 ++--
+ 3 files changed, 4 insertions(+), 2 deletions(-)
+
+commit 9fc39a34bce26587b20b557cfd9173439d499539
+Author: Albertabrahams <halilibrahim.soyman@gmail.com>
+Date:   Fri Jul 1 12:45:47 2022 +0300
+
+    git lo history added
+
+ gitlog_commit_history.txt | 129 ++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 129 insertions(+)
+
 commit dcd86d0a0d95c8cc9e35a59224314a3253c75ab2
 Author: Albertabrahams <halilibrahim.soyman@gmail.com>
 Date:   Fri Jul 1 12:43:47 2022 +0300
