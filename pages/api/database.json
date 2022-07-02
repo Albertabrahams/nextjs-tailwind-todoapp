@@ -23,12 +23,6 @@
             "title": "new task",
             "checked": false,
             "pinned": false
-        },
-        {
-            "id": 1656579056157,
-            "title": "Please give me the job:)))",
-            "checked": true,
-            "pinned": true
         }
     ]
 }
