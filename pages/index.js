@@ -34,7 +34,7 @@ const handleSubmit = (e) => {
   return (
     <div className=" flex w-3/5 lg:h-800 md:h-[44rem] sm:h-[25rem] bg-white mt-5 mb-5  flex-col text-gray-200 rounded ">
       <Head>
-        <title>Next App</title>
+        <title>WesterOps Todo</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1 className="w-36 font-['Inter'] pt-10 border-b-4 border-[#FF7964] text-center mx-auto text-[#194591] font-semibold text-[20px]">
