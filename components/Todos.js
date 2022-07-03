@@ -18,6 +18,7 @@ const checkTodo = async (id, check) => {
     });
     mutate("/api/todos");
   };
+  
 
   return (
     <div className=" mt-2 w-full flex justify-between text-[#010A1B] font-['Inter'] ">
