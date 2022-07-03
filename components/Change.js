@@ -4,7 +4,7 @@ import { mutate } from "swr";
 //helper when fetching data from the server
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 //
-const EditMenu = ({ id, isPinned, title }) => {
+const Change = ({ id, isPinned, title }) => {
     //To edit the title of the todo (popover)
     const [isOpen, setIsOpen] = useState(false);
     const [updateItem, setUpdateItem] = useState(title);
@@ -164,4 +164,4 @@ const EditMenu = ({ id, isPinned, title }) => {
   );
 };
 
-export default EditMenu;
+export default Change;

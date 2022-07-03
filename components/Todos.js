@@ -1,10 +1,10 @@
 import React from "react";
 import { mutate } from "swr";
-import EditMenu from "./EditMenu";
+import Change from "./Change";
 //helper when fetching data from the server
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 //props
-const Todos = ({id,title,isChecked, isPinned }) => {
+const Todos = ({ id, title, isChecked, isPinned }) => {
 
   //Checked-Unchecked Todo
 const checkTodo = async (id, check) => {
@@ -50,7 +50,7 @@ const checkTodo = async (id, check) => {
           <li key={id}>{title}</li>
         </span>
       </label>
-      <EditMenu  //edit menu component
+      <Change  //edit menu component
       id = {id}
       isPinned = {isPinned}
       title = {title}

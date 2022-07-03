@@ -9,7 +9,7 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 export default function Home() {
   //getting todos from the api
   const { data, error } = useSWR("/api/todos", fetcher);
-  const [todoItem, setTodoItem] = useState("");
+  const [todoName, setTodoName] = useState("");
 
   //Create New Todo By Title "POST" Function
   const addTodo = async (title) => {
@@ -27,16 +27,18 @@ export default function Home() {
   //Functions runs when user clicks on the button
 const handleSubmit = (e) => {
   e.preventDefault();
-  addTodo(todoItem);
-  setTodoItem("");
+  addTodo(todoName);
+  setTodoName("");
 }
 
   return (
     <div className=" flex w-3/5 lg:h-800 md:h-[44rem] sm:h-[25rem] bg-white mt-5 mb-5  flex-col text-gray-200 rounded ">
+    
       <Head>
         <title>WesterOps Todo</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <h1 className="w-36 font-['Inter'] pt-10 border-b-4 border-[#FF7964] text-center mx-auto text-[#194591] font-semibold text-[20px]">
         ToDo List
       </h1>
@@ -65,9 +67,9 @@ const handleSubmit = (e) => {
             <input
               className="flex w-full h-full p-0 items-center text-sm ml-2 outline-none placeholder:text-[#010A1B] text-[#010A1B]"
               type="text"
-              value={todoItem}
+              value={todoName}
               placeholder="Add a task..."
-              onChange={(e) => setTodoItem(e.target.value)}
+              onChange={(e) => setTodoName(e.target.value)}
             />
           </div>
           <button
@@ -90,11 +92,11 @@ const handleSubmit = (e) => {
           </button>
           
         </div>
-        
         </form>
+
         <ul>
           {data?.filter((item) => item.pinned) //filtering pinned todos
-            .map(({ id, title , checked,pinned }) => (
+            .map(({ id, title , checked, pinned }) => (
               <Todos
               key={id}
               id={id}
