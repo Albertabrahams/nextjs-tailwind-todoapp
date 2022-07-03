@@ -1,6 +1,7 @@
 import useSWR, { mutate } from "swr";
 import { useState } from "react";
 import Todos from "../components/Todos";
+import Head from 'next/head'
 
 //helper when fetching data from the server
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
@@ -31,8 +32,11 @@ const handleSubmit = (e) => {
 }
 
   return (
-    <div
-      className=" flex w-3/5 lg:h-800 md:h-[44rem] sm:h-[25rem] bg-white mt-5 mb-5  flex-col text-gray-200 rounded ">
+    <div className=" flex w-3/5 lg:h-800 md:h-[44rem] sm:h-[25rem] bg-white mt-5 mb-5  flex-col text-gray-200 rounded ">
+      <Head>
+        <title>Next App</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <h1 className="w-36 font-['Inter'] pt-10 border-b-4 border-[#FF7964] text-center mx-auto text-[#194591] font-semibold text-[20px]">
         ToDo List
       </h1>
